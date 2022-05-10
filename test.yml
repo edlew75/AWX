@@ -1,0 +1,11 @@
+---
+- name: TEST
+  gather_facts: false
+  hosts: R1
+  connection: local
+  tasks:
+    - name: RUN COMMANDS IN PB
+      ios_config:
+        commands:
+          - 'ip ssh version 2'
+          - 'do wr'
