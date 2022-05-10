@@ -1,7 +1,7 @@
 ---
 - name: TEST
   gather_facts: false
-  hosts: R1
+  hosts: all
   connection: local
   tasks:
   - name: RUN COMMANDS IN PB
