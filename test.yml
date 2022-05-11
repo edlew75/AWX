@@ -3,6 +3,7 @@
   gather_facts: false
   hosts: CSR
   tasks:
+  
   - name: RUN COMMANDS IN PB
     ios_config:
       commands:
