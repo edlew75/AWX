@@ -4,7 +4,7 @@
   hosts: CSR
   tasks:
   - name: RUN COMMANDS IN PB
-      cisco.ios.ios_config:
-        commands:
-          - 'ip ssh version 2'
-          - 'do wr'
+    ios_config:
+      commands:
+        - 'ip ssh version 2'
+        - 'do wr'
