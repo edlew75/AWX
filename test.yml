@@ -1,12 +1,10 @@
 ---
-  - name: TEST
-    gather_facts: false
-    hosts: 172.16.1.189
-    connection: local
-  
-    tasks:
-      - name: RUN COMMANDS IN PB
-        cisco.ios.ios_config:
-          commands:
-            - 'ip ssh version 2'
-            - 'do wr'
+- name: TEST
+  gather_facts: false
+  hosts: CSR
+  tasks:
+  - name: RUN COMMANDS IN PB
+    ios_config:
+      commands:
+        - 'ip ssh version 2'
+        - 'do wr'
