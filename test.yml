@@ -1,8 +1,7 @@
 ---
 - name: TEST
   gather_facts: false
-  hosts: R1
-  connection: local
+  hosts: CSR
   tasks:
   - name: RUN COMMANDS IN PB
     ios_config:
