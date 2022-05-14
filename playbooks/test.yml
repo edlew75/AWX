@@ -4,7 +4,8 @@
   hosts: CSR
   tasks:
   - name: RUN COMMANDS IN PB
-    ios_config:
+    ios_commands:
       commands:
+        - 'conf t'
         - 'ip ssh version 2'
         - 'do wr'
