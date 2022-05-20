@@ -1,7 +1,7 @@
 ---
 - name: TEST
   gather_facts: false
-  hosts: CSR
+  hosts: all
   tasks:
   - name: RUN COMMANDS IN PB
     ios_commands:
