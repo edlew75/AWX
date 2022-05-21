@@ -2,6 +2,7 @@
 - name: TEST
   gather_facts: false
   hosts: routers
+  connection: local
   vars:
     ios_provider:
       username: {{ un }}
