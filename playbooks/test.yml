@@ -1,7 +1,12 @@
 ---
 - name: TEST
   gather_facts: false
-  hosts: all
+  hosts: routers
+  vars:
+    ios_provider:
+      username: {{ un }}
+      password: {{ pwd }}
+      
   tasks:
   - name: RUN COMMANDS IN PB
     ios_commands:
