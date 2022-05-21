@@ -9,9 +9,9 @@
       password: {{ pwd }}
 
   tasks:
-  - name: RUN COMMANDS IN PB
-    ios_config:
-      commands:
-        - 'conf t'
-        - 'ip ssh version 2'
-        - 'do wr'
+    - name: RUN COMMANDS IN PB
+      ios_config:
+        commands:
+          - 'conf t'
+          - 'ip ssh version 2'
+          - 'do wr'
