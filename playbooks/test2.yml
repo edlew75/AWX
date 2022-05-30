@@ -1,14 +1,11 @@
 ---
+- hosts: 192.168.199.11
+  gather_facts: no
 
-  - hosts: 192.168.199.11
-    gather_facts: no
-    
-    tasks:
-      - name: Commands within PB
-        ios_command:
-          commands:
-            - command: 'config t'
-            - command: 'ip ssh version 2'
-            - command: 'service password-encryption'
-            - command: 'end'
-            - command: 'write'
+  tasks:
+    - name: Create Loopback999
+      ios_interfaces:
+        config:
+          - name: Loopback999
+            description: Configured with Ansible
+            enabled: true
