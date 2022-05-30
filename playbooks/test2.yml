@@ -1,0 +1,12 @@
+---
+- hosts: 192.168.199.11
+  gather_facts: no
+  tasks:
+    - name: Commands within PB
+      ios_command:
+        commands:
+          - command: 'config t'
+          - command: 'ip ssh version 2'
+          - command: 'service password-encryption'
+          - command: 'end'
+          - command: 'write'
