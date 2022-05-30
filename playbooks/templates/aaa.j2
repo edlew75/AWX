@@ -1,0 +1,11 @@
+aaa new-model
+!
+{% for tac_srv in tacacs.server %}
+tacacs server {{ tac_srv }}
+key {{ tacacs.key }}
+{% endfor %}
+tacacs server ISEPAN1
+address ipv4 {{ tacacs.pan1 }}
+tacacs server ISEPAN2
+address ipv4{{ tacacs.pan2 }}
+!

@@ -1,0 +1,7 @@
+tacacs:
+  server:
+    - ISEPAN1
+    - ISEPAN2
+  pan1: "1.1.1.1"
+  pan2: "2.2.2.2"
+  key: cisco
