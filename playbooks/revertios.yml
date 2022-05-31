@@ -1,0 +1,13 @@
+---
+- hosts: ios
+  gather_facts: no
+  tasks:
+    - name: Revert to Base Config
+      ios_command:
+        commands:
+          - command: 'config replace unix:base'
+            prompt:
+              - '.*'
+            answer:
+              - 'Y'
+              - "\r"

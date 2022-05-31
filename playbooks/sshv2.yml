@@ -1,0 +1,12 @@
+---
+- hosts: 192.168.199.11
+  gather_facts: no
+  tasks:
+    - name: Run Commands within PB
+      ios_command:
+        commands:
+          - command: 'conf t'
+          - command: 'ip ssh version 2'
+          - command: 'ip ssh authentication-retries 2'
+          - command: 'end'
+          - command: 'wr'
