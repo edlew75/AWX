@@ -2,8 +2,15 @@
 
 - hosts: 192.168.199.11
   gather_facts: no
+  connection: local
+  vars:
+    ios_provider:
+      username: admin
+      password: admin
+
   tasks:
 
     - name: RUN TEST3 PB
-      cisco.ios.ios_config:
+      ios_config:
         src: "templates/aaa.j2"
+        provider: "{{ ios_provider }}"
