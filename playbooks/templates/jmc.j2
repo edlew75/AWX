@@ -1,0 +1,14 @@
+hostname R{{ router.r11 }}
+no ip domain-lookup
+interface {{ mpls.rid }}
+ip address 10.129.254.{{ router.r11 }} {{ mpls.mask }}
+mpls ldp router-id {{ mpls.rid }} force
+mpls traffic-eng tunnels
+router ospf {{ ospf.pid }}
+auto-cost refer {{ ospf.rb }}
+mpls ldp autoconfig area {{ ospf.area }}
+network 10.129.0.0 0.0.255.255 area {{ ospf.area }}
+vrf definition {{ vrf1.name }}
+rd {{ vrf1.rd }}
+add ipv4
+route-target {{ vrf1.rt }}

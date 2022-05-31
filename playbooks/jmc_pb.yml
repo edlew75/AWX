@@ -1,0 +1,12 @@
+---
+- hosts: 192.168.199.11
+  gather_facts: no
+  vars_files:
+    - "/home/node1/git/AWX/playbooks/group_vars/jmc.yml"
+  tasks:
+    - name: Create Configs from Template
+      template: src="../playbooks/templates/jmc.j2" dest="{{ playbook_dir }}/jmc.cfg"
+
+    - name: Apply Configs
+      ios_config:
+        src: "{{ playbook_dir }}/jmc.cfg"

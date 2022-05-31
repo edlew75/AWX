@@ -1,0 +1,15 @@
+mpls:
+  rid: Loopback4300
+  mask: "255.255.255.255"
+router:
+  r11: "11"
+  r12: "12"
+  r13: "13"
+ospf:
+  pid: "129"
+  rb: "1000000"
+  area: "0"
+vrf1:
+  name: JBN
+  rd: "65129:2163"
+  rt: "65129:2163"
