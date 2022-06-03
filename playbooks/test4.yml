@@ -1,0 +1,14 @@
+---
+- hosts: 192.168.199.11
+  gather_facts: no
+  vars_files:
+    - "/home/node1/git/AWX/playbooks/group_vars/aaa.yml"
+    - "/home/node1/git/AWX/playbooks/group_vars/jmc.yml"
+  tasks:
+    - name: Apply AAA Template
+      ios_config:
+        src: "/home/node1/git/AWX/playbooks/templates/aaa.j2"
+
+    - name: Apply JMC Template
+      ios_config:
+        src: "/home/node1/git/AWX/playbooks/templates/jmc.j2"
