@@ -7,6 +7,6 @@
     - name: Create Configs from Template
       template: src="{{ playbook_dir }}/templates/jmc.j2" dest="{{ playbook_dir }}/jmc.cfg"
 
-    # - name: Apply Configs
-      # ios_config:
-        # src: "{{ playbook_dir }}/jmc.cfg"
+    - name: Apply Configs
+      ios_config:
+        src: "{{ playbook_dir }}/jmc.cfg"
