@@ -1,17 +1,72 @@
-hostname R{{ router.r1 }}
+hostname {{ hostname }}
 no ip domain lookup
+ip access-list standard {{ mpls.acl }}
+{% for ace in mpls.ace %}
+{{ ace }}
+{% endfor %}
+mpls ldp session protection
+mpls ldp label
+ allocate global host-routes
+mpls traffic-eng tunnels
+mpls traffic-eng reoptimization timers frequency 60
+!
 interface {{ mpls.rid }}
- ip address 10.129.254.{{ router.r1 }} {{ mpls.mask }}
+ ip address {{ ip_loopback4300 }} 255.255.255.255
 !
 mpls ldp router-id {{ mpls.rid }} force
 mpls traffic-eng tunnels
 router ospf {{ ospf.pid }}
+ router-id {{ ip_loopback4300 }}
  auto-cost refer {{ ospf.rb }}
  mpls ldp autoconfig area {{ ospf.area }}
  network 10.129.0.0 0.0.255.255 area {{ ospf.area }}
-vrf definition {{ vrf1.name }}
- rd {{ vrf1.rd }}
+ mpls traffic-eng router-id {{ mpls.rid }}
+ mpls traffic-eng area 0
+!
+vrf definition {{ vrf.def1 }}
+ rd {{ vrf.rd1 }}
  !
  add ipv4
-  route-target {{ vrf1.rt }}
+  route-target {{ vrf.rt1 }}
 exit
+vrf definition {{ vrf.def2 }}
+ rd {{ vrf.rd2 }}
+ !
+ add ipv4
+  route-target {{ vrf.rt2 }}
+exit
+!
+route-map BGP->EIGRP2163 permit 10 
+ set tag 2163
+route-map EIGRP2163->BGP deny 10
+ match tag 2163
+route-map EIGRP2163->BGP permit 20
+!
+router eigrp JBN
+ !
+ address-family ipv4 unicast vrf JBN autonomous-system 2163
+  !
+  af-interface default
+   passive-interface
+  exit-af-interface
+  !
+  topology base
+   redistribute bgp 65129 metric 1000000 100 255 1 1500 route-map BGP->EIGRP2163
+  exit-af-topology
+  network 172.29.0.0
+ exit-address-family
+ 
+router bgp 65129
+ bgp router-id {{ ip_loopback4300 }}
+ no bgp default ipv4
+ neighbor {{ nbr1 }} remote-as 65129
+ neighbor {{ nbr1 }} update-source {{ mpls.rid }}
+ neighbor {{ nbr2 }} remote-as 65129
+ neighbor {{ nbr2 }} update-source {{ mpls.rid }}
+ address-family vpnv4
+  neighbor {{ nbr1 }} activate
+  neighbor {{ nbr2 }} activate
+ exit-address-family
+  address-family ipv4 vrf JBN
+  redistribute eigrp 2163 route-map EIGRP2163->BGP
+ exit-address-family
