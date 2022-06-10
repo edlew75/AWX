@@ -1,5 +1,7 @@
 hostname {{ hostname }}
+!
 no ip domain lookup
+!
 ip access-list standard {{ mpls.acl }}
 {% for ace in mpls.ace %}
 {{ ace }}
