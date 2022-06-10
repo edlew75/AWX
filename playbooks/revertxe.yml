@@ -1,0 +1,13 @@
+---
+- hosts: iosxe
+  gather_facts: no
+  tasks:
+    - name: Revert to Base Config
+      ios_command:
+        commands:
+          - command: 'config replace bootflash:base'
+            prompt:
+              - '.*'
+            answer:
+              - 'Y'
+              - "\r"
