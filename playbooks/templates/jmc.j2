@@ -4,11 +4,14 @@ ip access-list standard {{ mpls.acl }}
 {% for ace in mpls.ace %}
 {{ ace }}
 {% endfor %}
+no mpls ldp advertise-labels
+mpls ldp advertise-labels for {{ mpls.acl }}
+mpls ldp range {{ label_range }}
 mpls ldp session protection
 mpls ldp label
  allocate global host-routes
 mpls traffic-eng tunnels
-mpls traffic-eng reoptimization timers frequency 60
+mpls traffic-eng reoptimize timers frequency 60
 !
 interface {{ mpls.rid }}
  ip address {{ ip_loopback4300 }} 255.255.255.255
