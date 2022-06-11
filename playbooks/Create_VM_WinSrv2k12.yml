@@ -1,23 +1,21 @@
 ---
 - name: Create a VM from a template
-  hosts: servers
+  hosts: vcenter
   connection: local
   gather_facts: no
-  vars:
-    ansible_python_interpreter: /usr/bin/python3
 
   tasks:
   - name: Create Windows Server 2012 VM
     vmware_guest:
-      hostname: vcsa
-      username: "{{ vmware_user }}"
-      password: "{{ vmware_password }}"
+      hostname: "{{ vcent }}"
+      username: "{{ vcsa_user }}"
+      password: "{{ vcsa_pwd }}"
       validate_certs: False
       esxi_hostname: esx148
       folder: ProdVM
       name: DC50
       template: Win2k12_Template
       datacenter: Datacenter
-      datastore: Datastore HDD-147
+      datastore: Datastore HDD-148
       state: poweredoff
       wait_for_ip_address: no
