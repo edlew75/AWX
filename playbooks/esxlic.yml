@@ -1,0 +1,6 @@
+---
+- hosts: esx
+  gather_facts: no
+  tasks:
+    - name: Reset Eval License
+      shell: /vmfs/volumes/Datastore\ HDD-148/license.sh > reseteval.txt
