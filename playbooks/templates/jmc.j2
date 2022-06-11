@@ -7,7 +7,7 @@ ip access-list standard {{ mpls.acl }}
 !
 no mpls ldp advertise-labels
 mpls ldp advertise-labels for {{ mpls.acl }}
-mpls ldp range {{ label_range }}
+mpls label range {{ label_range }}
 mpls ldp session protection
 mpls ldp label
  allocate global host-routes
