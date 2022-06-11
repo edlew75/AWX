@@ -18,7 +18,7 @@ interface {{ mpls.rid }}
  ip address {{ ip_loopback4300 }} 255.255.255.255
 !
 mpls ldp router-id {{ mpls.rid }} force
-mpls traffic-eng tunnels
+!
 router ospf {{ ospf.pid }}
  router-id {{ ip_loopback4300 }}
  auto-cost refer {{ ospf.rb }}
