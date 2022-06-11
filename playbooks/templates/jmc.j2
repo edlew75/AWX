@@ -4,6 +4,7 @@ ip access-list standard {{ mpls.acl }}
 {% for ace in mpls.ace %}
 {{ ace }}
 {% endfor %}
+!
 no mpls ldp advertise-labels
 mpls ldp advertise-labels for {{ mpls.acl }}
 mpls ldp range {{ label_range }}
