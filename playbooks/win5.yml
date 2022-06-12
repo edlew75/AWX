@@ -4,8 +4,8 @@
   tasks:
     - name: Add or Remove Features
       win_feature:
-        name: DHCP
-        state: present
+        name: DNS
+        state: absent
         include_sub_features: yes
         include_management_tools: yes
       register: win_feature
