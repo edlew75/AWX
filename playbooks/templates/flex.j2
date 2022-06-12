@@ -22,14 +22,16 @@ crypto ikev2 profile {{ ikev2.profile }}
 !
 crypto ipsec transform-set {{ ipsec.name }} {{ ipsec.ts }}
 !
-interface {{ hub_int }}
+crypto ipsec profile {{ ipsec.profile }}
+ set transform-set {{ ipsec.name }}
+ set ikev2-profile {{ ikev2.profile }}
+!
+interface {{ vpn_int }}
  vrf forwarding {{ vrf.def }}
  ip address {{ ip_vpnsource }}
 !
-interface {{ spoke_int }}
- vrf forwarding {{ vrf.def }}
- ip address {{ ip_vpnsource }}
-!
-{{ tun_int }}
+{{ hub_int }}
 !
 {{ spoke_int }}
+ tunnel mode ipsec ipv4
+ tunnel source {{ vpn_int }}
