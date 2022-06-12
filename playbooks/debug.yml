@@ -1,0 +1,12 @@
+---
+- hosts: csr2
+  gather_facts: no
+  tasks:
+    - name: Debug Test
+      ios_config:
+        lines: logging host 1.1.1.1
+      register: "output"
+
+    - name: command output
+      debug:
+        var: ouput
