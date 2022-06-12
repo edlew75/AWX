@@ -1,0 +1,14 @@
+---
+- hosts: win1
+  gather_facts: no
+  tasks:
+    - name: Change Option 150
+      win_shell: Set-DhcpServerv4OptionValue -ScopeId 172.16.0.0 -OptionId 150 -value "4.4.4.4", "5.5.5.5"
+
+    - name: Execute Shell
+      win_shell: Get-DhcpServerv4OptionValue -ScopeId 172.16.0.0 -OptionId 150 | Format-List
+      register: shell_output
+
+    - name: command output
+      debug:
+        var: shell_output.stdout_lines

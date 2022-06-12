@@ -1,0 +1,13 @@
+---
+
+- hosts: win
+  gather_facts: no
+  tasks:
+    - name: check getdate
+      win_command: |
+        whoami
+      register: command_output
+      
+    - name: command output
+      debug:
+        var: command_output.stdout_lines

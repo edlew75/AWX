@@ -1,0 +1,11 @@
+---
+- hosts: win1
+  gather_facts: no
+  tasks:
+    - name: Show whoami
+      win_command: whoami
+      register: whoami_out
+
+    - name: command output
+      debug:
+        var: whoami_out.stdout_lines

@@ -1,0 +1,14 @@
+---
+- hosts: win1
+  gather_facts: no
+  tasks:
+    - name: Add or Remove Features
+      win_feature:
+        name: DHCP
+        state: present
+        include_sub_features: yes
+        include_management_tools: yes
+      register: win_feature
+    - name: Reboot Server
+      win_reboot:
+      when: win_feature.reboot_required
