@@ -12,3 +12,4 @@ ikev2:
 ipsec:
   name: TS
   ts: esp-aes 256 esp-sha-hmac
+  profile: IPSEC
