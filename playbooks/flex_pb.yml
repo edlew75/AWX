@@ -1,0 +1,13 @@
+---
+- hosts: iosxe
+  gather_facts: no
+  vars_files:
+    - "/home/node1/git/AWX/playbooks/group_vars/flex.yml"
+
+  tasks:
+    - name: Configure Flex from Template
+      template: src="/home/node1/git/AWX/playbooks/templates/flex.j2" dest="{{ playbook_dir }}/flex.cfg"
+
+    - name: Configure Flex from Config File
+      ios_config:
+        src: "{{ playbook_dir }}/flex.cfg"

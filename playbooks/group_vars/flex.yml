@@ -1,2 +1,14 @@
-flex:
-  psk: cisco123
+vrf:
+  def: ISPWAN
+ikev2:
+  keyring: KEYRING
+  keyring_psk: cisco1234
+  proposal: IKEV2-PROP
+  encryption: aes-cbc-256 aes-cbc-192
+  integrity: sha384 sha256
+  dh_group: group 21 20 19
+  policy: IKEV2-POL
+  profile: IKEV2-PROFILE
+ipsec:
+  name: TS
+  ts: esp-aes 256 esp-sha-hmac
