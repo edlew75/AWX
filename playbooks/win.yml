@@ -1,4 +1,16 @@
 ---
 - hosts: win1
-  gather_facts:
+  gather_facts: no
   
+  tasks:
+    # - name: Run Remote Script
+    #   win_shell: C:\scripts\getdhcpscopes.ps1
+    #   register: shell_output
+
+    - name: Run Remote Script
+      win_shell: C:\scripts\getoptionvalues.ps1
+      register: shell_output
+
+    - name: command output
+      debug:
+        var: shell_output.stdout_lines
