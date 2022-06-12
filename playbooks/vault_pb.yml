@@ -1,0 +1,15 @@
+---
+- hosts: iosxe
+  gather_facts: no
+  vars_files:
+    - "{{ playbook_dir }}/group_vars/keys.yml"
+  
+  tasks:
+    - name: Test Vault
+      ios_command:
+        commands:
+          - command: 'config t'
+          - command: 'username ed privilege 15 secret {{ password }}'
+          - command: 'end'
+          - command: 'write'
+      
