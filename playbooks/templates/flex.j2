@@ -34,4 +34,5 @@ interface {{ vpn_int }}
 !
 {{ spoke_int }}
  tunnel mode ipsec ipv4
+ tunnel vrf {{ vrf.def }}
  tunnel source {{ vpn_int }}
