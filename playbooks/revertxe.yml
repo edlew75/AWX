@@ -3,7 +3,7 @@
   gather_facts: no
   tasks:
     - name: Revert to Base Config
-      ios_command:
+      cisco.ios.ios_command:
         commands:
           - command: 'config replace bootflash:base'
             prompt:
