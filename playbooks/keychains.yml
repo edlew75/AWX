@@ -9,3 +9,7 @@
       template:
         src: "{{ playbook_dir }}/templates/eigrp_keychain.j2"
         dest: "{{ playbook_dir }}/eigrp_keychain.cfg"
+
+    - name: Adding Keychain
+      ios_config:
+        src: "{{ playbook_dir }}/eigrp_keychain.cfg"
