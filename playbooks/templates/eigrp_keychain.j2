@@ -1,0 +1,16 @@
+key chain EIGRP
+ key 1
+  key-string {{ eigrp_keys.1 }}
+   accept-lifetime 00:01:00 Jun 1 2022 01:00:00 Dec 1 2022
+   send-lifetime 00:01:00 Jun 1 2022 01:00:00 Dec 1 2022
+   cryptographic-algorithm hmac-sha-256
+ key 2
+  key-string {{ eigrp_keys.2 }}
+   accept-lifetime 00:01:00 Jan 1 2023 01:00:00 Jun 1 2023
+   send-lifetime 00:01:00 Jan 1 2023 01:00:00 Jun 1 2023
+   cryptographic-algorithm hmac-sha-256
+ key 3
+  key-string {{ eigrp_keys.3 }}
+   accept-lifetime 00:01:00 Jun 1 2023 01:00:00 Dec 1 2023
+   send-lifetime 00:01:00 Jun 1 2023 01:00:00 Dec 1 2023
+   cryptographic-algorithm hmac-sha-256
