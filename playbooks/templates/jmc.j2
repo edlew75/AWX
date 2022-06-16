@@ -5,8 +5,6 @@ ip access-list standard {{ mpls.acl }}
 {{ ace }}
 {% endfor %}
 !
-{% include "{{ playbook_dir }}/templates/ospf_keychain.j2" %}
-!
 no mpls ldp advertise-labels
 mpls ldp advertise-labels for {{ mpls.acl }}
 mpls label range {{ label_range }}
@@ -76,3 +74,5 @@ router bgp 65129
   address-family ipv4 vrf JBN
   redistribute eigrp 2163 route-map EIGRP2163->BGP
  exit-address-family
+!
+{% include "{{ playbook_dir }}/templates/tacacs.j2"%}

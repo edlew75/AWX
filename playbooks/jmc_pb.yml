@@ -2,7 +2,7 @@
 - hosts: all
   gather_facts: no
   vars_files:
-    - "{{ playbook_dir }}/group_vars/jmc.yml"
+    - "{{ playbook_dir }}/group_vars/all.yml"
   tasks:
     - name: Create Configs from Template
       template: src="{{ playbook_dir }}/templates/jmc.j2" dest="{{ playbook_dir }}/jmc.cfg"
