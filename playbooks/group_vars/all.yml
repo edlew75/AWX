@@ -6,7 +6,7 @@ TAC_SERVERS:
   ISEPAN2:
     ipadd: "2.2.2.2"
     sec_key: "cisco123"
-vrf:
+fvrf:
   def: ISPWAN
 ikev2:
   keyring: KEYRING
