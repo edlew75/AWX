@@ -5,6 +5,8 @@ ip access-list standard {{ mpls.acl }}
 {{ ace }}
 {% endfor %}
 !
+{% include "{{ playbook_dir }}/templates/ospf_keychain.j2" %}
+!
 no mpls ldp advertise-labels
 mpls ldp advertise-labels for {{ mpls.acl }}
 mpls label range {{ label_range }}
