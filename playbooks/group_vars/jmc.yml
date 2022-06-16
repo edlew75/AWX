@@ -16,3 +16,11 @@ vrf:
   def2: JMO
   rd2: "65129:240"
   rt2: "65129:240"
+OSPF_KEYS:
+  OSPF-KEYCHAIN:
+    8:
+      ospf_key: "{{ jbn_ospf_key_8 }}"
+      time: 00:00:00 May 1 2022 01:00:00 Nov 1 2022
+    253:
+      ospf_key: "{{ jbn_ospf_key_253 }}"
+      time: 00:01:00 Nov 1 2022 infinite
