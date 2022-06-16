@@ -75,4 +75,4 @@ router bgp 65129
   redistribute eigrp 2163 route-map EIGRP2163->BGP
  exit-address-family
 !
-{% include "{{ playbook_dir }}/templates/tacacs.j2"%}
+{% include "/tacacs.j2"%}
