@@ -1,0 +1,12 @@
+---
+- hosts: csr1
+  gather_facts: no
+  ignore_errors: yes
+  vars_files:
+    - "{{ playbook_dir }}/group_vars/tacacs.yml"
+
+  tasks:
+    - name: Test Template
+      template:
+        src: "{{ playbook_dir }}/templates/tacacs.j2"
+        dest: "{{ playbook_dir }}/tacacs.cfg"

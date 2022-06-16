@@ -1,1 +1,55 @@
 ---
+TAC_SERVERS:
+  ISEPAN1:
+    ipadd: "1.1.1.1"
+    sec_key: "cisco123"
+  ISEPAN2:
+    ipadd: "2.2.2.2"
+    sec_key: "cisco123"
+vrf:
+  def: ISPWAN
+ikev2:
+  keyring: KEYRING
+  keyring_psk: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          38653032636635313961326165633332643063306130313830333339346438353962346161383761
+          3037363862353736353936653134383335356136646236330a313537663737313165383335613636
+          34383637646366663563353635303034303936373431323732363339306335626665623862313866
+          6633623362616562660a336161346165653235353230313735386437643232623732633762323963
+          3461
+  proposal: IKEV2-PROP
+  encryption: aes-cbc-256 aes-cbc-192
+  integrity: sha384 sha256
+  dh_group: group 21 20 19
+  policy: IKEV2-POL
+  profile: IKEV2-PROFILE
+ipsec:
+  name: TS
+  ts: esp-aes 256 esp-sha-hmac
+  profile: IPSEC
+mpls:
+  rid: Loopback4300
+  acl: LDP_PREFIX_FILTER
+  ace:
+    - 10 permit 10.129.0.0 0.0.0.255
+    - 20 permit 10.129.254.0 0.0.0.255
+    - 30 permit 10.129.248.0 0.0.0.255
+ospf:
+  pid: "129"
+  rb: "1000000"
+  area: "0"
+vrf:
+  def1: JBN
+  rd1: "65129:2163"
+  rt1: "65129:2163"
+  def2: JMO
+  rd2: "65129:240"
+  rt2: "65129:240"
+OSPF_KEYS:
+  OSPF-KEYCHAIN:
+    8:
+      ospf_key: "{{ jbn_ospf_key_8 }}"
+      time: 00:00:00 May 1 2022 01:00:00 Nov 1 2022
+    253:
+      ospf_key: "{{ jbn_ospf_key_253 }}"
+      time: 00:01:00 Nov 1 2022 infinite

@@ -1,0 +1,5 @@
+{% for name, server in TAC_SERVERS.items() %}
+ tacacs server {{ name }}
+  address ipv4 {{ server.ipadd }}
+  key {{ server.sec_key }}
+{% endfor %}
