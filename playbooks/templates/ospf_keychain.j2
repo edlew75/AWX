@@ -1,0 +1,11 @@
+{% for key, item in OSPF_KEYS.items() %}
+!
+key chain {{ key }}
+{% for number, values in item.items() %}
+ key {{ number }}
+  key-string 7 {{ value.ospf_key }}
+  accept-lifetime {{ values.time }}
+  send-lifetime {{ values.time }}
+  cryptographic-algorithm hmac-sha-256
+{% endfor %}
+{% endfor %}
