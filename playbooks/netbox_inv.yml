@@ -1,0 +1,8 @@
+---
+plugin: netbox
+api_endpoint: http://localhost:8000/
+token: 1111112222
+validate_certs: False
+config_context: False
+group_by:
+  - device_roles
