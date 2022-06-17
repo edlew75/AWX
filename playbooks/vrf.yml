@@ -1,0 +1,12 @@
+---
+- hosts: csr1
+  gather_facts: no
+  ignore_errors: yes
+  vars_files:
+    - "{{ playbook_dir }}/group_vars/all.yml"
+
+  tasks:
+    - name: TEST
+      template:
+        src: "{{ playbook_dir }}/templates/vrf.j2"
+        dest: "{{ playbook_dir }}/vrf.cfg"

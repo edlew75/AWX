@@ -38,13 +38,13 @@ ospf:
   pid: "129"
   rb: "1000000"
   area: "0"
-vrf:
-  def1: JBN
-  rd1: "65129:2163"
-  rt1: "65129:2163"
-  def2: JMO
-  rd2: "65129:240"
-  rt2: "65129:240"
+VRF_DEF:
+  JBN:
+    rd: "65129:2163"
+    rt: "65129:2163"
+  JMO:
+    rd: "65129:240"
+    rt: "65129:240"
 OSPF_KEYS:
   OSPF-KEYCHAIN:
     8:

@@ -1,0 +1,6 @@
+{% for vrf, def in VRF_DEF.items() %}
+ vrf definition {{ vrf }}
+  rd {{ def.rd }}
+  address-family ipv4
+   route-target {{ def.rt }}
+{% endfor %}
