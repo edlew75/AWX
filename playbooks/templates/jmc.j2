@@ -67,8 +67,10 @@ router bgp 65129
  no bgp default ipv4
  neighbor {{ nbr1 }} remote-as 65129
  neighbor {{ nbr1 }} update-source {{ mpls.rid }}
+ neighbor {{ nbr1 }} password {{ bgp_pwd }}
  neighbor {{ nbr2 }} remote-as 65129
  neighbor {{ nbr2 }} update-source {{ mpls.rid }}
+ neighbor {{ nbr2 }} password {{ bgp_pwd }}
  address-family vpnv4
   neighbor {{ nbr1 }} activate
   neighbor {{ nbr2 }} activate
