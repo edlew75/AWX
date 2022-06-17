@@ -1,5 +1,2 @@
-#!/usr/bin/env python
-
-import json
-import requests
+#!/usr/bin/env python3
 
