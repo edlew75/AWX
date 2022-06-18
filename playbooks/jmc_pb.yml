@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: iosxe
   gather_facts: no
   vars_files:
     - "{{ playbook_dir }}/group_vars/all.yml"
