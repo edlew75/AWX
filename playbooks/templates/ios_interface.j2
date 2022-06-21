@@ -1,0 +1,9 @@
+{% for interface in interfaces %}
+{% if interface.name.startswith('Gigabit') %}
+interface {{ interface.name }}
+ ip address {{ interface.intf_address }} {{ interface.intf_netmask }}
+ no shutdown
+ exit
+!
+{% endif %}
+{% endfor %}
