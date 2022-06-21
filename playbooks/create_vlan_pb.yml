@@ -1,0 +1,9 @@
+---
+- name: Vlan Interface Playbook
+  gather_facts: no
+  hosts: all
+  var_files:
+    - "{{ playbook_dir }}/group_vars/create_vlan.yml"
+
+  tasks:
+    - name: 
