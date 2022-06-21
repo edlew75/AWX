@@ -1,0 +1,16 @@
+---
+- hosts: iosxe
+  gather_facts: no
+  connection: local
+
+  vars:
+    interfaces:
+      - name: GigabitEthernet3
+        intf_address: 99.99.99.99
+        intf_netmask: 255.255.255.0
+
+  tasks:
+    - name: Interface Configs from Template
+      template:
+        src: "{{ playbook_dir }}/templates/ios_interfaces.j2"
+        dest: "{{ playbook_dir }}/ios_interfaces.cfg" 
