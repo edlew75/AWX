@@ -1,5 +1,5 @@
 ---
-- hosts: device_roles_Router
+- hosts: iosxe
   gather_facts: no
   tasks:
     - name: Revert to Base Config
