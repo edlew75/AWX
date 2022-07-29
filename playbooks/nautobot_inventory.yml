@@ -1,0 +1,9 @@
+### inventory/nautobot_inventory.yaml
+---
+plugin: networktocode.nautobot.inventory
+api_endpoint: "http://nautobot.lab.local"
+token: "bbab9ff64e04695d1b2a94209c6f7529a5c9cfd2"
+validate_certs: False
+config_context: False
+group_by:
+  - device_roles
