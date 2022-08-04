@@ -1,5 +1,5 @@
 ---
-- hosts: iosxe
+- hosts: routers_iosxe
   gather_facts: no
   tasks:
     - name: Revert to Base Config
