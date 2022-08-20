@@ -3,4 +3,6 @@
   gather_facts: no
   tasks:
     - name: Generate Baseline
-      template: src="/home/edadmin/git/AWX/playbooks/baseline/router.j2" dest="/home/edadmin/git/AWX/playbooks/router.cfg"
+      template: 
+        src: "/home/edadmin/git/AWX/playbooks/baseline/router.j2"
+        dest: "{{ playbook_dir }}/router.cfg"
