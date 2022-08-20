@@ -9,8 +9,23 @@ platform qos marker-statistics
 platform qos match-statistics per-filter
 platform qos match-statistics per-ace
 {% endblock %}
-
+!
+{% block mpls %}
+mpls label protocol ldp
+mpls ldp session protection
+mpls ldp label
+ allocate global host-routes
+{% endblock %}
+!
 {% block eigrp %}
 router eigrp 100
 network 192.168.100.0
 {% endblock %}
+!
+{% block bgp %}
+router bgp 65129
+neig IBGP peer-group
+neig IBGP update-source lo4300
+neig IBGP remote-as 65129
+{% endblock %}
+!
