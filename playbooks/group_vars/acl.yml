@@ -1,0 +1,29 @@
+ACLs:
+    "1":
+      type: standard
+      lines:
+        - remark: Control Remote Access
+        - deny:
+          - host 1.1.1.1 log
+          - host 1.1.1.2 log
+          - host 1.1.1.3 log
+        - permit:
+          - 10.0.0.0 0.0.0.255
+          - 11.0.0.0 0.0.0.255
+          - 12.0.0.0 0.0.0.255
+          - 13.0.0.0 0.0.0.255
+        - deny:
+          - any log
+    VTY_BLOCK_ACL:
+      type: extended
+      lines:
+        - deny:
+            - tcp any any eq telnet log
+            - tcp any any eq www log
+        - permit:
+            - tcp host 1.1.1.1 any eq 22
+            - tcp host 1.1.1.2 any eq 22
+        - deny:
+            - tcp any any eq 22 log
+        - permit:
+            - ip any any log
