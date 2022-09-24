@@ -34,7 +34,7 @@ vrf definition {{ vrf }}
  rd {{ item.rd }}
  address-family ipv4
  route-target {{ item.rt }}
- exit
+{% endfor %}
 !
 route-map BGP->EIGRP2163 permit 10 
  set tag 2163
