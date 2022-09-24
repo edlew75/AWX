@@ -1,0 +1,24 @@
+---
+- name: Apply ACL 1
+  gather_facts: no
+  hosts: r1
+  vars_files:
+    - "group_vars/acl.yml"
+  vars:
+    - reqdACLs: "1"
+  tasks:
+    - name: Create ACL.cfg
+      template:
+        src: "templates/acl.j2"
+        dest: "{{ playbook_dir }}/acl.cfg"
+    # - name: Delete ACL 1
+    #   ios_config:
+    #     lines: "no ip access-list {{ item[0].value['type] }} {{ item[1] }}"
+    #   with_nested:
+    #     - "{{ ACLs | dict2items }}"
+    #     - "{{ reqdACLs }}"
+    #   when: item[0].key == item[1]
+
+    # - name: Configure ACL 1
+    #   ios_config:
+    #     src: "{{ playbook_dir }}/acl.cfg"
