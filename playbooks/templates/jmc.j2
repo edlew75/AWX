@@ -29,18 +29,12 @@ router ospf {{ ospf.pid }}
  mpls traffic-eng router-id {{ mpls.rid }}
  mpls traffic-eng area 0
 !
-vrf definition {{ vrf.def1 }}
- rd {{ vrf.rd1 }}
- !
- add ipv4
-  route-target {{ vrf.rt1 }}
-exit
-vrf definition {{ vrf.def2 }}
- rd {{ vrf.rd2 }}
- !
- add ipv4
-  route-target {{ vrf.rt2 }}
-exit
+{% for vrf, item in VRF_DEF.items() %}
+vrf definition {{ vrf }}
+ rd {{ item.rd }}
+ address-family ipv4
+ route-target {{ item.rt }}
+ exit
 !
 route-map BGP->EIGRP2163 permit 10 
  set tag 2163
