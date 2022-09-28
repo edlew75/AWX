@@ -14,6 +14,14 @@ ACLs:
           - 13.0.0.0 0.0.0.255
         - deny:
           - any log
+    "45"
+      type: standard
+      lines:
+        - permit:
+          - "227.1.1.1"
+          - "227.2.2.2"
+          - "227.3.3.3"
+          - "227.4.4.4"
     VTY_BLOCK_ACL:
       type: extended
       lines:
