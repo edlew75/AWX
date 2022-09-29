@@ -11,7 +11,16 @@
           - command: "group {{ pre_reflect }}"
           - command: "class-map type multicast CM-REFLECTED"
           - command: "group {{ post_reflect }}"
+          - command: "end"
+
+    - name: Add Service Reflection
+      ios_command:
+        commands:
+          - command: "config t"
           - command: "interface vif1"
           - command: "ip service reflect gi1 destination {{ pre_reflect }} to {{ post_reflect }} mask-len 32 source 10.22.1.2"
           - command: "end"
           - command: "write"
+
+- name: Import PB2
+  import_playbook: pb2.yml
