@@ -1,0 +1,17 @@
+---
+- name: Service Reflect
+  hosts: r1
+  gather_facts: no
+  tasks:
+    - name: Modify Class Maps
+      ios_command:
+        commands:
+          - command: "config t"
+          - command: "class-map type multicast CM"
+          - command: "group {{ pre_reflect }}"
+          - command: "class-map type multicast CM-REFLECTED"
+          - command: "group {{ post_reflect }}"
+          - command: "interface vif1"
+          - command: "ip service reflect gi1 destination {{ pre_reflect }} to {{ post_reflect }} mask-len 32 source 10.22.1.2"
+          - command: "end"
+          - command: "write"

@@ -1,0 +1,13 @@
+---
+- name: Modify Groups
+  hosts: r2
+  gather_facts: no
+  tasks:
+    - name: Modifying ACL45
+      ios_command:
+        commands:
+          - command: "config t"
+          - command: "ip access-list standard 45"
+          - command: "permit {{ post_reflect }}"
+          - command: "end"
+          - command: "write"
