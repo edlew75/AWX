@@ -1,0 +1,22 @@
+---
+- hosts: csr1
+  gather_facts: no
+  tasks:
+    - name: "TASK 1: Push EIGRP"
+      ios_config:
+        src: "../templates/eigrp.j2"
+      register: eigrp_result
+
+    - name: "TASK 2: Print EIGRP Config"
+      debug:
+        msg: "{{ eigrp_result.commands }}"
+
+    - name: "TASK 3: Verify EIGRP Config"
+      ios_command:
+        commands:
+          - "show run | section eigrp"
+      register: output
+
+    - name: "TASK 4: Print EIGRP show Commands"
+      debug:
+        msg: "{{ output.stdout_lines }}"
