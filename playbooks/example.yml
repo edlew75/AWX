@@ -1,0 +1,12 @@
+---
+- name: Example
+  hosts: "{{ host_name }}"
+  gather_facts: no
+  tasks:
+    - name: TEST
+      ios_command:
+        commands:
+        - command: "config t"
+        - command: "interface loopback50"
+        - command: "ip address {{ ip_add }} 255.255.255.255"
+        - command: "end"
